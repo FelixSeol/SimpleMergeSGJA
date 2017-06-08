@@ -88,19 +88,17 @@ public class FileIOController {
 			
 			for(int j = 0; j < lineInfo.size(); j++){
 				k = lineInfo.get(j);
-
-				System.out.println("flag : " + this.blocks.get(i).getFlag()); 
+				
 				if(this.blocks.get(i).getFlag() == 1){
 					this.write(this.rightFile, k);
-					System.out.print("left ");
-					if(i != lineInfo.size() - 1)
-						this.bufferedWriter.newLine();	
 				}
 				else{
 					this.write(this.leftFile, k);
-					System.out.print("right ");
-					if(i != lineInfo.size() - 1)
-						this.bufferedWriter.newLine();	
+				}
+				if(i == this.blocks.size() - 1 && j == lineInfo.size() - 1){}
+				else{
+					System.out.println();
+					this.bufferedWriter.newLine();
 				}
 			}
 		}
@@ -114,19 +112,18 @@ public class FileIOController {
 			lineInfo = this.blocks.get(i).getRightLineInfo();
 			for(int j = 0; j < lineInfo.size(); j++){
 				k = lineInfo.get(j);
-				
 				if(this.blocks.get(i).getFlag() == 2){
 					this.write(this.leftFile, k);
-					System.out.print("right ");
-					if(i != lineInfo.size() - 1)
-						this.bufferedWriter.newLine();	
 				}
 				else{
 					this.write(this.rightFile, k);
-					System.out.print("left ");
-					if(i != lineInfo.size() - 1)
-						this.bufferedWriter.newLine();	
-				}	
+				}
+				if(i == this.blocks.size() - 1 && j == lineInfo.size() - 1){}
+				else{
+					System.out.println();
+					this.bufferedWriter.newLine();
+				}
+				
 			}
 		}
 	}
