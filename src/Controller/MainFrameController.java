@@ -70,7 +70,7 @@ public class MainFrameController implements Initializable {
  		System.out.println("COMPARE!");
  		ListViewLeftController lc = split_text_frameController.getListViewLeftController();
  		ListViewRightController rc = split_text_frameController.getListViewRightController();
- 		ScrollbarBinding.bind(lc.getListViewLeft(), rc.getListViewRight(), true);
+ 		ScrollbarBinding.sbind(lc.getListViewLeft(), rc.getListViewRight(), true);
  		
  	}
 	

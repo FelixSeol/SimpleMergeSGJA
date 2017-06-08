@@ -62,11 +62,9 @@ public class CompareCode {
 		int blockSize;
 		ObservableList<Model_Block> blocks = this.fileIO.getBlocks();
 		Model_Block block = new Model_Block();
-<<<<<<< HEAD
 
-=======
 		block.setisSame(false);
->>>>>>> 33175c58192a13640365c46b614e3e34cff352f6
+
 		insertLineInfo(block, prior1, current1, prior2,current2);
 		//insertLineInfo(block2, prior2, current2);
 		
