@@ -70,6 +70,7 @@ public class ListViewLeftController implements Initializable {
                         }else{
                         	setText("");
                         	this.getStyleClass().remove("diff-cell");
+                        	this.getStyleClass().remove(".list-cell:filled:selected");
                         }
                     }
                 };

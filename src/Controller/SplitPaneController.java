@@ -72,7 +72,7 @@ public class SplitPaneController implements Initializable {
 			checkCompareButton();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("No file load");
 		}
  		System.out.println("Left LOAD!");
 	}
@@ -132,7 +132,7 @@ public class SplitPaneController implements Initializable {
 			checkCompareButton();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("No file load");
 		}
 		
 		

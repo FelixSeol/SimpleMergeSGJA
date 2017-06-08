@@ -283,31 +283,28 @@
 .listView .list-cell {
 	-fx-padding : 1px;
 	-fx-background-color : white;
+	-fx-text-fill : black;
 }
 
-.listView .list-cell:filled:selected {
+.listView .diff-cell:filled:selected {
 	-fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
     -fx-text-fill: white;
 }
-
 .listView .diff-cell {
 	-fx-background-color : yellow;
+	-fx-border-style : none;
 }
 .listView .same-cell {
 	-fx-background-color : white;
-}
+	-fx-border-style : none;
+}/* 
 .list-cell:filled:selected:focused, .list-cell:filled:selected {
     -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
     -fx-text-fill: white;
-}
-.listView .diff-cell:filled:selected:focused, .listView .diff-cell:filled:selected {
-    -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
+}*/
+.listView :selected:focused, .listView :filled:selected {
+    
     -fx-text-fill: white;
 }
 
-/*
-.list-cell:filled:hover {
-    -fx-background-color: #0093ff;
-    -fx-text-fill: white;
-}*/
 
