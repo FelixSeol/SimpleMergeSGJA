@@ -67,7 +67,8 @@ public class MainFrameController implements Initializable {
  	public void compareOnAction(){
  		compareCode = new CompareCode(fileIOController);
  		compareCode.createBlock();
- 		System.out.println("COMPARE!");
+ 		System.out.println("Compare Completed");
+
  		ListViewLeftController lc = split_text_frameController.getListViewLeftController();
  		ListViewRightController rc = split_text_frameController.getListViewRightController();
  		ScrollbarBinding.sbind(lc.getListViewLeft(), rc.getListViewRight(), true);
@@ -77,14 +78,14 @@ public class MainFrameController implements Initializable {
 	
 	@FXML
 	public void lefttorightOnAction(){
-		System.out.println("Left To Right MERGE!");
+
 		MergeCode mc = new MergeCode(fileIOController);
 		mc.copyLeftToRight();
 	}
 	
 	@FXML
 	public void righttoleftOnAction(){
-		System.out.println("Right To Left MERGE!");
+
 		MergeCode mc = new MergeCode(fileIOController);
 		mc.copyRightToleft();
 	}	

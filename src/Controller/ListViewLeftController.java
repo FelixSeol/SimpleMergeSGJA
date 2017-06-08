@@ -53,7 +53,7 @@ public class ListViewLeftController implements Initializable {
 	                        		sb.append("\t\n");
 	                        	}
                         	}else if(t.isModified() && t.getFlag()==1){
-                        		System.out.println("when t is modified as right to left");
+
 	                        	for(int j = 0 ; j < t.getLeftLineInfo().size() ; j++){
 		                        	sb.append(fileIOController.getRightFile().getLines().get((t.getLeftLineInfo().get(j))).getValue()+"\t\n");
 		                       	}
@@ -111,7 +111,7 @@ public class ListViewLeftController implements Initializable {
 	@FXML
 	public void onListViewLeftMouseClicked(){
 		int index = listView_left.focusModelProperty().getValue().getFocusedIndex();
-		System.out.println("BlockIdx : " + index);
+
 		fileIOController.setSelectedBlockIndex(index);
 		
 		if(!listView_left.getItems().get(index).isSame()){

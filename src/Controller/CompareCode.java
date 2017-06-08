@@ -64,7 +64,6 @@ public class CompareCode {
 		Model_Block block = new Model_Block();
 
 		block.setisSame(false);
-
 		insertLineInfo(block, prior1, current1, prior2,current2);
 		//insertLineInfo(block2, prior2, current2);
 		

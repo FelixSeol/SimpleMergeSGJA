@@ -132,7 +132,6 @@ public class ListViewRightController implements Initializable {
 	@FXML
 	public void onListViewRightMouseClicked(){
 		int index = listView_right.focusModelProperty().getValue().getFocusedIndex();
-		System.out.println("BlockIdx : "+ index);
 		fileIOController.setSelectedBlockIndex(index);
 		
 		if(!listView_right.getItems().get(index).isSame()){
