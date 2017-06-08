@@ -14,7 +14,7 @@ public class Model_Block {
 	private int flag; 		//flag==1 getData From Left, flag==2 getDataFromright
 	private boolean modified;
 	private boolean isSame;
-		
+	
 	public Model_Block(){
 		leftLineInfo = new ArrayList<Integer>();
 		rightLineInfo = new ArrayList<Integer>();
@@ -23,6 +23,7 @@ public class Model_Block {
 		flag = 0;
 		modified = false;
 		isSame = true;
+		
 	}
 	public Model_Block(Model_File fileleft, Model_File fileright){
 		leftLineInfo = new ArrayList<Integer>();

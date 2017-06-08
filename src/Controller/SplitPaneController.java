@@ -74,23 +74,34 @@ public class SplitPaneController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
- 		System.out.println("Left LOAD!");
 	}
 	
 	@FXML
- 	public void leftSaveOnAction() throws IOException{
-		this.fileIOController.fileSave(FILE_LEFT);
- 		System.out.println("Left SAVE!");
+ 	public void leftSaveOnAction(){
+		try {
+			this.fileIOController.fileSave(FILE_LEFT);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
  	public void leftSaveasOnAction(){
- 		System.out.println("Left SAVEAS!");
+		FileChooser filechooser = myFileChooser("Save as");
+		File file = filechooser.showSaveDialog(null);
+		try{
+			fileIOController.fileSaveAs(FILE_LEFT, file.getAbsolutePath().toString());
+			
+		} catch(IOException e){
+
+			e.printStackTrace();
+		}
+			
 	}
 	
 	@FXML
  	public void leftCloseOnAction(){
- 		System.out.println("Left CLOSE!");
  		setLeftDisableButton("true","false","false","false","false","false");
 		checkCompareButton();
  		fileIOController.setLeftFile(null);
@@ -138,13 +149,27 @@ public class SplitPaneController implements Initializable {
 	}
 	
 	@FXML
- 	public void rightSaveOnAction(){
- 		System.out.println("Right SAVE!");
+ 	public void rightSaveOnAction() {
+		try {
+			this.fileIOController.fileSave(FILE_RIGHT);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
  	public void rightSaveasOnAction(){
- 		System.out.println("Right SAVEAS!");
+		FileChooser filechooser = myFileChooser("Save as");
+		File file = filechooser.showSaveDialog(null);
+		try{
+			fileIOController.fileSaveAs(FILE_RIGHT, file.getAbsolutePath().toString());
+			
+		} catch(IOException e){
+
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
@@ -265,13 +290,17 @@ public class SplitPaneController implements Initializable {
 		else menuItem_right_editOff.setDisable(false);
 	}
 
-	private void checkCompareButton(){
-		if(fileIOController.getLeftFile()!=null && fileIOController.getRightFile()!= null){
-			if(leftEditFlag || rightEditFlag){
-				mainFrameController.setCompare("false");
+	public void checkCompareButton(){
+		if(fileIOController.getBlocks().size()==1){
+			if(fileIOController.getLeftFile()!=null && fileIOController.getRightFile()!= null){
+				if(leftEditFlag || rightEditFlag){
+					mainFrameController.setCompare("false");
+				}
+				else mainFrameController.setCompare("true");
 			}
-			else mainFrameController.setCompare("true");
+			else mainFrameController.setCompare("false");
+		}else{
+			mainFrameController.setCompare("false");
 		}
-		else mainFrameController.setCompare("false");
 	}
 }

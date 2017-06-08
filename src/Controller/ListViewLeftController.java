@@ -25,6 +25,7 @@ public class ListViewLeftController implements Initializable {
 
 	@FXML
 	private ListView<Model_Block> listView_left;
+	
 	@FXML
 	private ObservableList<Model_Block> listItems = FXCollections.observableArrayList();
 	@FXML
@@ -52,7 +53,7 @@ public class ListViewLeftController implements Initializable {
 	                        		sb.append("\t\n");
 	                        	}
                         	}else if(t.isModified() && t.getFlag()==1){
-                        		System.out.println("when t is modified as right to left");
+
 	                        	for(int j = 0 ; j < t.getLeftLineInfo().size() ; j++){
 		                        	sb.append(fileIOController.getRightFile().getLines().get((t.getLeftLineInfo().get(j))).getValue()+"\t\n");
 		                       	}
@@ -64,15 +65,15 @@ public class ListViewLeftController implements Initializable {
                         	if(!t.isSame()){
                          		this.getStyleClass().add("diff-cell");
                          	}else{
-                         		System.out.println("white");
                          	}
                         	this.setText(sb.toString());
                         }else{
                         	setText("");
+                        	this.getStyleClass().remove("diff-cell");
                         }
                     }
                 };
-                cell.setEditable(true);
+                
                 return cell;
             }
         });
@@ -85,20 +86,14 @@ public class ListViewLeftController implements Initializable {
 		listItems = fileIOController.getBlocks();
 		Model_Block initBlock;
 		if(listItems.isEmpty()){
-			System.out.println("listItems are empty"+listItems.size());
 			initBlock = new Model_Block(file, fileIOController.getRightFile());
 			listItems.add(initBlock);
 		}else{
-			System.out.println("listItems are Not empty anyway"+listItems.size());
 			initBlock = new Model_Block(file, fileIOController.getRightFile());
 			listItems.set(0, initBlock);
-			System.out.println(listItems.size());
 		}
 		listView_left.setItems(listItems);
 		
-		for(int i = 0 ; i < listItems.size(); i++){
-			System.out.println(listItems.get(i).isSame());
-		}
 	}
 	
 	public void setControllerFileIO(FileIOController fileIOController){
@@ -115,7 +110,7 @@ public class ListViewLeftController implements Initializable {
 	@FXML
 	public void onListViewLeftMouseClicked(){
 		int index = listView_left.focusModelProperty().getValue().getFocusedIndex();
-		System.out.println("BlockIdx : " + index);
+
 		fileIOController.setSelectedBlockIndex(index);
 		
 		if(!listView_left.getItems().get(index).isSame()){

@@ -90,9 +90,11 @@ public class ListViewRightController implements Initializable {
 	                        	}
 	                        	if(!t.isSame()){
 	                        		this.getStyleClass().add("diff-cell");
+	                         	}else{
 	                         	}
 	                        	this.setText(sb.toString());   
 	                        }else{
+	                        	this.getStyleClass().remove("diff-cell");
 	                        	setText("");
 	                        }
 	                    }
@@ -105,11 +107,9 @@ public class ListViewRightController implements Initializable {
 	public void showFile(){
 		file = fileIOController.getRightFile();
 		listItems = fileIOController.getBlocks();
-		
-			
 		Model_Block initBlock;
 		if(listItems.isEmpty()){
-			initBlock = new Model_Block(null, file);
+			initBlock = new Model_Block(fileIOController.getLeftFile(), file);
 			listItems.add(initBlock);
 		}else{
 			initBlock = new Model_Block(fileIOController.getLeftFile(), file);
@@ -132,7 +132,6 @@ public class ListViewRightController implements Initializable {
 	@FXML
 	public void onListViewRightMouseClicked(){
 		int index = listView_right.focusModelProperty().getValue().getFocusedIndex();
-		System.out.println("BlockIdx : "+ index);
 		fileIOController.setSelectedBlockIndex(index);
 		
 		if(!listView_right.getItems().get(index).isSame()){

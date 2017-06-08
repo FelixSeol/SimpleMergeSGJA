@@ -74,37 +74,71 @@ public class FileIOController {
 		
 		for(int i = 0; i< file.getLines().size(); i++){
 			this.bufferedWriter.write(file.getLines().get(i).getValue());
-			this.bufferedWriter.newLine();
+			if(i != file.getLines().size() - 1)
+				this.bufferedWriter.newLine();
 		}
 	}
-	public void saveLeftWithChange(Model_File file) throws IOException {
-		
-		for(int i = 0; i < this.blocks.size(); i++)
-			this.useInfoToSave(i, this.blocks.get(i).getLeftLineInfo());
-	}
-	public void saveRightWithChange(Model_File file) throws IOException {
-		
-		for(int i = 0; i < this.blocks.size(); i++)
-			this.useInfoToSave(i, this.blocks.get(i).getRightLineInfo());
-	}
-	public void useInfoToSave(int index, ArrayList<Integer> lineInfo) throws IOException{
+	public void saveLeftWithChange() throws IOException {
 		
 		int k;
+		ArrayList<Integer> lineInfo;
 		
-		for(int i = 0; i < lineInfo.size(); i++){
-			k = lineInfo.get(i);
+		for(int i = 0; i < this.blocks.size(); i++){
+			lineInfo = this.blocks.get(i).getLeftLineInfo();
 			
-			if(this.blocks.get(i).getFlag() == 1)	this.write(this.leftFile, k);
-			else									this.write(this.rightFile, k);
+			for(int j = 0; j < lineInfo.size(); j++){
+				k = lineInfo.get(j);
+
+				System.out.println("flag : " + this.blocks.get(i).getFlag()); 
+				if(this.blocks.get(i).getFlag() == 1){
+					this.write(this.rightFile, k);
+					System.out.print("left ");
+					if(i != lineInfo.size() - 1)
+						this.bufferedWriter.newLine();	
+				}
+				else{
+					this.write(this.leftFile, k);
+					System.out.print("right ");
+					if(i != lineInfo.size() - 1)
+						this.bufferedWriter.newLine();	
+				}
+			}
+		}
+	}
+	public void saveRightWithChange() throws IOException {
+		
+		int k;
+		ArrayList<Integer> lineInfo;
+		for(int i = 0; i < this.blocks.size(); i++){
+			
+			lineInfo = this.blocks.get(i).getRightLineInfo();
+			for(int j = 0; j < lineInfo.size(); j++){
+				k = lineInfo.get(j);
+				
+				if(this.blocks.get(i).getFlag() == 2){
+					this.write(this.leftFile, k);
+					System.out.print("right ");
+					if(i != lineInfo.size() - 1)
+						this.bufferedWriter.newLine();	
+				}
+				else{
+					this.write(this.rightFile, k);
+					System.out.print("left ");
+					if(i != lineInfo.size() - 1)
+						this.bufferedWriter.newLine();	
+				}	
+			}
 		}
 	}
 	
-	public void write(Model_File file, int index) throws IOException {	this.bufferedWriter.write(file.getLines().get(index).getValue());	}
+	public void write(Model_File file, int index) throws IOException {
+		this.bufferedWriter.write(file.getLines().get(index).getValue());
+	}
 	public void fileSave(int leftOrRight) throws IOException{
 		
 
 		if(this.blocks.size() == 1){	//compare,merge 占쏙옙占쏙옙 占쏙옙占�
-			System.out.println("x");
+			System.out.println("Unchanged");
 			switch(leftOrRight){
 
 			case 0:	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
@@ -123,16 +157,16 @@ public class FileIOController {
 			}
 		}
 		else{	//compare, merge占쏙옙 占쏙옙占�
+			System.out.println("Changed");
 			switch(leftOrRight){
-
 			case 0:	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙	
 				this.newBufferedWriter(this.leftFile.getfileName());
-				this.saveLeftWithChange(this.leftFile);
+				this.saveLeftWithChange();
 				break;
 
 			case 1:	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 				this.newBufferedWriter(this.rightFile.getfileName());
-				this.saveRightWithChange(this.rightFile);
+				this.saveRightWithChange();
 				break;
 			default:
 				System.out.println("Save operation has been failed");
@@ -145,7 +179,6 @@ public class FileIOController {
 	public void fileSaveAs(int leftOrRight, String fileName) throws IOException{
 		
 		this.newBufferedWriter(fileName);
-		
 
 		if(this.blocks.size() == 1){	//compare,merge 占쏙옙占쏙옙 占쏙옙占�
 			switch(leftOrRight){
@@ -166,10 +199,10 @@ public class FileIOController {
 			switch(leftOrRight){
 
 			case 0:	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
-				this.saveLeftWithChange(this.leftFile);
+				this.saveLeftWithChange();
 				break;
 			case 1:	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
-				this.saveRightWithChange(this.rightFile);
+				this.saveRightWithChange();
 
 				break;
 			default:

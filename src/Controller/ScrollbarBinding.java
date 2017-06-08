@@ -16,7 +16,7 @@ import javafx.scene.control.ScrollBar;
  */
 
 /*
- * Compare 이후 Edit등에의해 파일상태로 돌아올떄 해제
+ * Compare �씠�썑 Edit�벑�뿉�쓽�빐 �뙆�씪�긽�깭濡� �룎�븘�삱�뻹 �빐�젣
  */
 public class ScrollbarBinding {
 
@@ -39,8 +39,7 @@ public class ScrollbarBinding {
      * @param lv1 the lv 1
      * @param lv2 the lv 2
      */
-    public static void bind(ListView lv1, ListView lv2, boolean bindorunbind) {
-    	System.out.println("hi");
+    public static void sbind(ListView lv1, ListView lv2, boolean bindorunbind) {
         if(bindorunbind)
         	bind(lv1, lv2, BIND_BIDIRECTIONAL);
         else

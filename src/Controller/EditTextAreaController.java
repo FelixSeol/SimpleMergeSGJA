@@ -48,20 +48,16 @@ public class EditTextAreaController implements Initializable {
 		}
 	}
 	public void changeEditedFile(){
-		System.out.println("----------Editresult------------");
 		ss = editTextArea.getText().split("\n");
 		
 		oldFile.getLines().clear();
 		for(int i = 0 ; i < ss.length ; i++){
-			System.out.println(ss[i]);
 			oldFile.setLinesLineByLine(ss[i]);
 		}
 	}
 	
 	public void showStat(){
-		System.out.println("------show--------");
 		for(int i = 0 ; i < ss.length ; i++){
-			System.out.println(oldFile.getLines().get(i).getValue());
 		}
 	}
 }
