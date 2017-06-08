@@ -93,6 +93,7 @@ public class SplitPaneController implements Initializable {
  		System.out.println("Left CLOSE!");
  		setLeftDisableButton("true","false","false","false","false","false");
 		checkCompareButton();
+		fileIOController.getBlocks().clear();
  		fileIOController.setLeftFile(null);
 		listView_leftController.showFile();
 		listView_rightController.showFile();
@@ -138,7 +139,8 @@ public class SplitPaneController implements Initializable {
 	}
 	
 	@FXML
- 	public void rightSaveOnAction(){
+ 	public void rightSaveOnAction() throws IOException{
+		this.fileIOController.fileSave(FILE_RIGHT);
  		System.out.println("Right SAVE!");
 	}
 	
@@ -152,6 +154,7 @@ public class SplitPaneController implements Initializable {
 		System.out.println("Right CLOSE!");
 		setRightDisableButton("true","false","false","false","false","false");
 		checkCompareButton();
+		fileIOController.getBlocks().clear();
 		fileIOController.setRightFile(null);
 		listView_leftController.showFile();
 		listView_rightController.showFile();
