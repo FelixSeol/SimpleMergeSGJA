@@ -25,6 +25,7 @@ public class ListViewLeftController implements Initializable {
 
 	@FXML
 	private ListView<Model_Block> listView_left;
+	
 	@FXML
 	private ObservableList<Model_Block> listItems = FXCollections.observableArrayList();
 	@FXML
@@ -64,15 +65,15 @@ public class ListViewLeftController implements Initializable {
                         	if(!t.isSame()){
                          		this.getStyleClass().add("diff-cell");
                          	}else{
-                         		System.out.println("white");
                          	}
                         	this.setText(sb.toString());
                         }else{
                         	setText("");
+                        	this.getStyleClass().remove("diff-cell");
                         }
                     }
                 };
-                cell.setEditable(true);
+                
                 return cell;
             }
         });
@@ -85,20 +86,14 @@ public class ListViewLeftController implements Initializable {
 		listItems = fileIOController.getBlocks();
 		Model_Block initBlock;
 		if(listItems.isEmpty()){
-			System.out.println("listItems are empty"+listItems.size());
 			initBlock = new Model_Block(file, fileIOController.getRightFile());
 			listItems.add(initBlock);
 		}else{
-			System.out.println("listItems are Not empty anyway"+listItems.size());
 			initBlock = new Model_Block(file, fileIOController.getRightFile());
 			listItems.set(0, initBlock);
-			System.out.println(listItems.size());
 		}
 		listView_left.setItems(listItems);
 		
-		for(int i = 0 ; i < listItems.size(); i++){
-			System.out.println(listItems.get(i).isSame());
-		}
 	}
 	
 	public void setControllerFileIO(FileIOController fileIOController){
