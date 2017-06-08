@@ -39,7 +39,7 @@ public class ScrollbarBinding {
      * @param lv1 the lv 1
      * @param lv2 the lv 2
      */
-    public static void bind(ListView lv1, ListView lv2, boolean bindorunbind) {
+    public static void sbind(ListView lv1, ListView lv2, boolean bindorunbind) {
     	System.out.println("hi");
         if(bindorunbind)
         	bind(lv1, lv2, BIND_BIDIRECTIONAL);
