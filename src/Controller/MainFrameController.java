@@ -71,6 +71,7 @@ public class MainFrameController implements Initializable {
  		ListViewLeftController lc = split_text_frameController.getListViewLeftController();
  		ListViewRightController rc = split_text_frameController.getListViewRightController();
  		ScrollbarBinding.sbind(lc.getListViewLeft(), rc.getListViewRight(), true);
+ 		split_text_frameController.checkCompareButton();
  		
  	}
 	

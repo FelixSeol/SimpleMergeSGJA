@@ -265,13 +265,17 @@ public class SplitPaneController implements Initializable {
 		else menuItem_right_editOff.setDisable(false);
 	}
 
-	private void checkCompareButton(){
-		if(fileIOController.getLeftFile()!=null && fileIOController.getRightFile()!= null){
-			if(leftEditFlag || rightEditFlag){
-				mainFrameController.setCompare("false");
+	public void checkCompareButton(){
+		if(fileIOController.getBlocks().size()==1){
+			if(fileIOController.getLeftFile()!=null && fileIOController.getRightFile()!= null){
+				if(leftEditFlag || rightEditFlag){
+					mainFrameController.setCompare("false");
+				}
+				else mainFrameController.setCompare("true");
 			}
-			else mainFrameController.setCompare("true");
+			else mainFrameController.setCompare("false");
+		}else{
+			mainFrameController.setCompare("false");
 		}
-		else mainFrameController.setCompare("false");
 	}
 }
