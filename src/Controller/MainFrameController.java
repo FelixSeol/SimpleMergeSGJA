@@ -33,6 +33,7 @@ public class MainFrameController implements Initializable {
 	private Parent split_text_frame;
 	@FXML
 	private SplitPaneController split_text_frameController; 		//Nested Controllers
+	private CompareCode compare;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
