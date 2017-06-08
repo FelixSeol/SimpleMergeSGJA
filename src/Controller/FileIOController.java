@@ -48,7 +48,6 @@ public class FileIOController {
 	
 	public int getSelectedBlockIndex(){ return this.selectedBlockIndex; }
 	
-
 	public void fileLoad(String fileName, int leftOrRight) throws IOException {
 		
 		Model_File new_file = new Model_File(fileName);
@@ -102,16 +101,13 @@ public class FileIOController {
 	public void write(Model_File file, int index) throws IOException {	this.bufferedWriter.write(file.getLines().get(index).getValue());	}
 	public void fileSave(int leftOrRight) throws IOException{
 		
-
 		if(this.blocks.size() == 1){	//compare,merge 占쏙옙占쏙옙 占쏙옙占�
 			System.out.println("x");
 			switch(leftOrRight){
-
 			case 0:	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 				this.newBufferedWriter(this.leftFile.getfileName());
 				this.saveWithNoChange(this.leftFile);
 				break;
-
 			case 1:	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 				this.newBufferedWriter(this.rightFile.getfileName());
 				this.saveWithNoChange(this.rightFile);
@@ -124,12 +120,10 @@ public class FileIOController {
 		}
 		else{	//compare, merge占쏙옙 占쏙옙占�
 			switch(leftOrRight){
-
 			case 0:	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙	
 				this.newBufferedWriter(this.leftFile.getfileName());
 				this.saveLeftWithChange(this.leftFile);
 				break;
-
 			case 1:	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 				this.newBufferedWriter(this.rightFile.getfileName());
 				this.saveRightWithChange(this.rightFile);
@@ -146,7 +140,6 @@ public class FileIOController {
 		
 		this.newBufferedWriter(fileName);
 		
-
 		if(this.blocks.size() == 1){	//compare,merge 占쏙옙占쏙옙 占쏙옙占�
 			switch(leftOrRight){
 			case 0:	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
@@ -154,7 +147,6 @@ public class FileIOController {
 				break;
 			case 1:	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 				this.saveWithNoChange(this.rightFile);
-
 				break;
 			default:
 				System.out.println("SaveAs operation has been failed");
@@ -164,13 +156,11 @@ public class FileIOController {
 		}
 		else{	//compare, merge占쏙옙 占쏙옙占�
 			switch(leftOrRight){
-
 			case 0:	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 				this.saveLeftWithChange(this.leftFile);
 				break;
 			case 1:	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 				this.saveRightWithChange(this.rightFile);
-
 				break;
 			default:
 				System.out.println("SaveAs operation has been failed");
